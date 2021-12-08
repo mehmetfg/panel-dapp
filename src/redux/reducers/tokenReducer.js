@@ -10,8 +10,6 @@ export  const tokenReducer = (state= INITIAL_STATE, action) =>{
         case T.INIT_TOKENS  :
             return {...state, tokens:action.payload};
         case T.SELECT_TOKEN :
-
-            console.log(action.payload)
             return {...state, token:action.payload};
         case T.INSERT_TOKEN :
             return {
@@ -30,6 +28,8 @@ export  const tokenReducer = (state= INITIAL_STATE, action) =>{
             };
         case T.REMOVE_SELECTED_TOKEN :
             return {...state, token: {}};
+        case T.SELECT_PHASE_STAKE_TOKEN :
+            return {...state, token:action.payload}
         default:
             return state
     }

@@ -12,7 +12,10 @@ export const selectToken = (id) => async (dispatch) => {
     const response = await fetcher.get( url+id)
     dispatch({type:T.SELECT_TOKEN, payload:response.data})
 }
-
+export const selectPhaseStakeContractToken = (id) => async (dispatch) => {
+    const response = await fetcher.get( 'phase-stake-contract/'+id)
+    dispatch({type:T.SELECT_PHASE_STAKE_TOKEN, payload:response.data})
+}
 export const insertToken = (data, history) => async (dispatch) => {
     try {
     const response = await  fetcher.post(url, data)

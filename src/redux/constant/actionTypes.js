@@ -13,7 +13,8 @@ export  const TokenActionTypes = {
     REMOVE_SELECTED_TOKEN   :   'REMOVE_SELECTED_TOKEN',
     DELETE_TOKEN            :   'DELETE_TOKEN',
     UPDATE_TOKEN            :   'UPDATE_TOKEN',
-    INSERT_TOKEN            :   'INSERT_TOKEN'
+    INSERT_TOKEN            :   'INSERT_TOKEN',
+    SELECT_PHASE_STAKE_TOKEN:   'SELECT_PHASE_STAKE_TOKEN'
 }
 export  const EvmActionTypes = {
     INIT_EVM                :   'INIT_EVM',

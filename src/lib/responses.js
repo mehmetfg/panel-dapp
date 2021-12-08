@@ -37,6 +37,7 @@ export const errorHandler = e => {
             return 'Yetkisi Sayfa Erişimi'
         case 405 :
             return Swal.fire('Sunucu Hatası ', e.response.data.message, 'error')
+        case 1 :
 
 
     }

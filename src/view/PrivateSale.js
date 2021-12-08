@@ -8,6 +8,7 @@ import {callBuyToken,
 import Swal from "sweetalert2";
 import {useDispatch, useSelector} from "react-redux";
 import {initEvm, removeEvm} from "../redux/actions/evmAction";
+import {selectToken} from "../redux/actions/tokenAction";
 
 const PrivateSale = () => {
 
@@ -32,6 +33,7 @@ const PrivateSale = () => {
     const [gasPrice, setGasPrice] = useState({})
     const [ethToUsdt, setEthToUsdt] = useState(0.00);
     useEffect( async () => {
+
         const gasPrice =await getGasPrice();
         setGasPrice(gasPrice);
         ///ethereumun güncel usdt kurunu getirme
@@ -40,6 +42,13 @@ const PrivateSale = () => {
 
     }, [])
 
+    useEffect(() => {
+
+        dispatch(selectToken(1))
+        return () => {
+
+        };
+    }, []);
 
 
 
@@ -382,7 +391,32 @@ const PrivateSale = () => {
                         </div>
                     </div>
                 </div>
+                <div className="card-body">
 
+                        <div><label className="float-left"><b>Input</b></label><span className="float-right text-muted">Balance: 0</span>
+                        </div>
+                        <div className="input-group mb-4"><input type="text" className="form-control form-control-lg"
+                                                                 placeholder="0" required=""></input>
+                            <div className="input-group-append">
+                                <div className="input-group-text"><img
+                                    src=""
+                                    height="32" alt=""></img> ETH </div>
+                            </div>
+                        <div><label className="float-left"><b>Output</b></label><span
+                            className="float-right text-muted">Balance: 0</span></div>
+                        <div className="input-group mb-2"><input type="text" className="form-control form-control-lg"
+                                                                 placeholder="0" disabled="" value="0"></input>
+                            <div className="input-group-append">
+                                <div className="input-group-text"><img
+                                    src=""
+                                    height="32" alt=""></img>&nbsp; DApp</div>
+                            </div>
+                        <div className="mb-5"><span className="float-left text-muted">Exchange Rate</span><span
+                            className="float-right text-muted">1 ETH = 100 DApp</span></div>
+                        <button type="submit" className="btn btn-primary btn-block btn-lg">SWAP!</button>
+                        </div>
+                        </div>
+                </div>
             </div>
         )
 

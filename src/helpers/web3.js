@@ -49,11 +49,46 @@ function callBalanceOf(web3,address) {
             )
     })
 }
-export function callTransfer(item) {
+
+export  function getInvesterInfo() {
+    return new Promise(async(resolve, reject) => {
+        const contract = getTokenContract(web3, 1)
+        await contract.methods.getInvestorInfo(address)
+            .call(
+                { from: address},
+                (err, data) => {
+                    if (err) {
+                        reject(err)
+                    }
+
+                    resolve(data)
+                }
+            )
+    })
+}
+export  function getTokenBalance() {
+    return new Promise(async(resolve, reject) => {
+        const contract = getTokenContract(web3, 1)
+        await contract.methods.balanceERC20(address)
+            .call(
+                { from: address},
+                (err, data) => {
+                    if (err) {
+                        reject(err)
+                    }
+
+                    resolve(data)
+                }
+            )
+    })
+}
+
+export function callTransfer(toAddress, amount) {
+    console.log(address)
     return new Promise(async(resolve, reject) => {
         const contract = getTokenContract(web3 ,1)
         await contract.methods
-            .transfer(item.address, parseFloat(item.quentity))
+            .transfer(toAddress, parseFloat(amount))
             .send({ from: address }, (err, data) => {
                 if (err) {
 
@@ -63,11 +98,60 @@ export function callTransfer(item) {
 
             }).then(function (status){
 
-                resolve(status.transactionHash)
+                resolve(status)
             })
     })
 }
+export function setStakeToInvester(toAddress, amount, day, percent) {
+    //console.log(toAddress, amount, day ,percent)
+    console.log(address)
+    return new Promise(async(resolve, reject) => {
+        const contract = getTokenContract(web3 ,1)
+        await contract.methods
+            .stake(toAddress, amount,day, percent)
+            .send({
+                from: address,
+                value: 0,
+                gasLimit: 155000,
+                gasPrice: 114  * 1000000000
+            }, (err, data) => {
+                if (err) {
 
+                    reject(err)
+                }
+
+
+            }).then(function (status){
+
+                resolve(status)
+            })
+    })
+}
+export function stakeWithdraw(index) {
+    //console.log(toAddress, amount, day ,percent)
+    console.log(address)
+    return new Promise(async(resolve, reject) => {
+        const contract = getTokenContract(web3 ,1)
+        await contract.methods
+            .withdraw(address, index)
+            .send({
+                from: address,
+                value: 0,
+                gasLimit: 155000,
+                gasPrice: 114  * 1000000000
+            }, (err, data) => {
+                if (err) {
+
+                    reject(err)
+                }
+
+
+            }).then(function (status){
+
+                resolve(status)
+            })
+    })
+}
 export function callBuyToken(address, web3) {
     return new Promise(async(resolve, reject) => {
         const token = getTokenContract(web3)
