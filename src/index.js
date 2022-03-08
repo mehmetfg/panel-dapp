@@ -6,7 +6,7 @@ import reportWebVitals from './reportWebVitals';
 import i18next from "i18next";
 import common_tr from "./translations/tr/common.json";
 import common_en from "./translations/en/common.json";
-
+import { MoralisProvider } from "react-moralis";
 i18next.init({
     interpolation: { escapeValue: false },  // React already does escaping
     lng: 'en',                              // language to use
@@ -21,7 +21,11 @@ i18next.init({
 });
 ReactDOM.render(
   <React.StrictMode>
+      <MoralisProvider appId="j1uMQxAaPwjUSVFeVpP4UHN2uJ0W7cqoIjbEDBRt" serverUrl="https://gp7zqxpu9bgk.usemoralis.com:2053/server">
+          <App />
+
     <App />
+      </MoralisProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );

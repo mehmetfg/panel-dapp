@@ -8,6 +8,7 @@ import StakeWithdraw from "./view/StakeWithdraw";
 import WithdrawConfirm from "./view/WithdrawConfirm";
 import StakeNew from './view/StakeNew';
 import StakeNewWithdraw from './view/StakeNewWithdraw';
+import MoralisWS from "./view/Moralis";
 const  Routes = () => {
     return (
     <Router>
@@ -20,6 +21,7 @@ const  Routes = () => {
         <Route path={"/react/withdraw-confirm/:id"} component={WithdrawConfirm}></Route>
         <Route path={"/react/stake-new"} component={StakeNew}></Route>
         <Route path={"/react/stake-new-withdraw"} component={StakeNewWithdraw}></Route>
+        <Route path={"/react/moralis"} component={MoralisWS}></Route>
     </Switch>
     </Router>
     )
